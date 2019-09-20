@@ -13,6 +13,7 @@ namespace MO_Project
         private List<Vertex> childVertices;
         private string name;
         private int? weight;
+
         /// <summary>
         /// Конструктор без параметров, который создает вершину с координатами (0;0),
         /// стандартным именем и весом 1.
@@ -108,18 +109,40 @@ namespace MO_Project
         public override string ToString()
         {
             string outs = $"Координаты вершины (х;у): ({posX.ToString()};{posY.ToString()})" +
-                $"\nИмя вершины: {name}\nВес вершины: {weight}\nВершины-родитель:";
+                $"\nИмя вершины: {name}";
+
+            if (weight == null)
+                outs += $"\nВес вершины: не имеет веса";
+            else
+                outs += $"\nВес вершины: {weight}";
+
             List<Vertex> parents = GetParents;
+            outs += $"\nВершины-родитель:";
             for (int i = 0; i < parents.Count; i++)
             {
                 outs += $"\n      {parents[i].Name}";
             }
+
             List<Vertex> childs = GetChilds;
             outs += $"\nВершины-потомки:";
             for (int i = 0; i < childs.Count; i++)
             {
                 outs += $"\n      {childs[i].Name}";
             }
+
+            return outs;
+        }
+
+        public virtual string ToShortString()
+        {
+            string outs = $"Координаты вершины (х;у): ({posX.ToString()};{posY.ToString()})" +
+                $"\nИмя вершины: {name}";
+
+            if (weight == null)
+                outs += $"\nВес вершины: не имеет веса";
+            else
+                outs += $"\nВес вершины: {weight}";
+
             return outs;
         }
     }
