@@ -104,5 +104,23 @@ namespace MO_Project
         /// Получить список вершин-потомков данной вершины
         /// </summary>
         public List<Vertex> GetChilds { get { return childVertices; } }
+
+        public override string ToString()
+        {
+            string outs = $"Координаты вершины (х;у): ({posX.ToString()};{posY.ToString()})" +
+                $"\nИмя вершины: {name}\nВес вершины: {weight}\nВершины-родитель:";
+            List<Vertex> parents = GetParents;
+            for (int i = 0; i < parents.Count; i++)
+            {
+                outs += $"\n      {parents[i].Name}";
+            }
+            List<Vertex> childs = GetChilds;
+            outs += $"\nВершины-потомки:";
+            for (int i = 0; i < childs.Count; i++)
+            {
+                outs += $"\n      {childs[i].Name}";
+            }
+            return outs;
+        }
     }
 }
