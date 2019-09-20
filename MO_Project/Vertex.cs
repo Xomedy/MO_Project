@@ -106,6 +106,42 @@ namespace MO_Project
         /// </summary>
         public List<Vertex> GetChilds { get { return childVertices; } }
 
+        /// <summary>
+        /// Добавляет вершину в список вершин-потомков
+        /// </summary>
+        /// <param name="child">Вершина потомок</param>
+        public void AddChildVertex(Vertex child)
+        {
+            childVertices.Add(child);
+        }
+
+        /// <summary>
+        /// Добавляет вершину в список вершин-родителей
+        /// </summary>
+        /// <param name="parent">Вершина родитель</param>
+        public void AddParentVertex(Vertex parent)
+        {
+            parentVertices.Add(parent);
+        }
+
+        /// <summary>
+        /// Удаляет вершину из списка вершин-потомков
+        /// </summary>
+        /// <param name="child">Вершина потомок</param>
+        public void RemoveChildVertex(Vertex child)
+        {
+            childVertices.Remove(child);
+        }
+
+        /// <summary>
+        /// Удаляет вершину из списка вершин-родителей
+        /// </summary>
+        /// <param name="parent">Вершина родитель</param>
+        public void RemoveParentVertex(Vertex parent)
+        {
+            parentVertices.Remove(parent);
+        }
+
         public override string ToString()
         {
             string outs = $"Координаты вершины (х;у): ({posX.ToString()};{posY.ToString()})" +
